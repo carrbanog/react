@@ -1,0 +1,13 @@
+const [counter, setCounter] = React.useState(0);
+첫번째:  초기화 (React.useState(0)는 counter의 초기값을 0으로 설정)
+두번째: 상태 값 읽기 (setCounter는 counter을 업데이트 하는 함수)
+세번째: 상태 업데이트 (setCounter를 사용하여 counter의 값 업데이트)
+만약 setCounter(5)라면 counter의 값을 5로 변경
+
+setCounter(current => current+1) //current는 현재 상태 값, current말고 다른 이름 가능
+setCounter(counter + 1)
+2개는 같은 기능 하지만 위에것이 더 안전
+
+{flipped ? amount*60 : amount} flipped가 true면 amount*60 false먄 amount
+
+React에서는 삼항 연산자를 쓰는게 더 편함

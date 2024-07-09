@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.querySelector("#root");
+  function App(){
+    const [counter, setCounter] = React.useState(0);//괄호안은 counter의 초기값, setCounter은 counter을 수정하는 함수
+    const onClick = () => {
+      // setCounter(counter + 1);이거랑 밑에코드는 똑같은 기능 하지만 밑에것이 더 안전
+      setCounter(current => current+1);//current는 현재 상태값(current말고 다른 이름 가능), counter이랑 동일
+    }
+    return(
+    <div>
+      <h3>
+        Total clicks: {counter}
+      </h3>
+      <button onClick = {onClick}>
+        click me  
+      </button>
+    </div>);
+}
+  //기본 형태
+  // function Container(){
+  //   return(
+  //     <div>
+  //       <h3>
+  //         Total clicks: 0
+  //       </h3>
+  //       <button>
+  //         click me  
+  //       </button>
+  //     </div>
+  //   )
+  // }
+
+    ReactDOM.render(<App/>, root);
+</script>
+</html>
