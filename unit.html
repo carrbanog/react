@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <label for="minutes">minutes</label>
+    <input type="text" placeholder="minutes" id="minutes">
+    <button>change</button>
+    <label for="hours">hours</label>
+    <input type="text" placeholder="hours" id="hours" disabled>
+    <button>change</button>
+  </form>
+  <button id="reset">reset</button>
+  <button id="flip">flip</button>
+</body>
+<script>
+  const form = document.querySelector("form");
+  const inputMinutes = document.querySelector("#minutes");
+  const inputHours = document.querySelector("#hours");
+  const flipBtn = document.querySelector("#flip");
+
+  flipBtn.addEventListener("click", function(){
+    inputMinutes.disabled = !inputMinutes.disabled;
+    inputHours.disabled = !inputHours.disabled;
+  })
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    inputHours.value = inputMinutes.value * 60;
+  })
+</script>
+</html>
