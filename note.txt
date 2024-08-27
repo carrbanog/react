@@ -15,3 +15,45 @@ const [first, second] = food;
 console.log(first) => tomato
 console.log(second) => potato
 
+{}안에 js사용가능
+
+      const onFlip = () => {
+        setFlipped((current) => !current); current는 현재값(current말고 다른 값 가능)
+        reset();
+      }
+
+
+  //props
+  function Btn(props){ Btn({dd})도 가능
+    console.log(props);
+    return (
+      <button style={{
+        backgroundColor:"tomato",
+        color:"white",
+        padding:"10px 20px",
+        borderRadius:10,
+        border:0
+      }}>{props.dd}</button>
+    )
+  }
+  function App(){
+    return(
+      <div>
+        <Btn dd="Save Change" aa="a" cc="c" /> Btn함수로 생각하면 편함
+        <Btn dd="Continue" />
+      </div>
+    )
+  }
+dd는 Btn컴포넌트에 전달된 하나의 속성
+props는 컴포넌트에 전달된 속성을 나타내는 객체 Btn의 매개변수
+props는 첫번째이자 유일한 인자
+props는 오브젝트이기 때문에 Btn({dd})이대로 받는것도 가능
+Btn({dd, aa})
+
+
+React.memo();
+const MemorizedBtn = React.memo(Btn);
+//불필요한 재렌더링 방지
+//<MemorizedBtn text={value} onClick={changeValue} /> 이 부분클릭하면 변경되서 새로 렌더링 하지만 <MemorizedBtn text="Continue" /> 이 부분은 똑같기때문에 렌더링x
+<MemorizedBtn text={value} fontSize={18} />
+<MemorizedBtn text="Continue" />
