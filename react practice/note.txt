@@ -57,3 +57,33 @@ const MemorizedBtn = React.memo(Btn);
 //<MemorizedBtn text={value} onClick={changeValue} /> 이 부분클릭하면 변경되서 새로 렌더링 하지만 <MemorizedBtn text="Continue" /> 이 부분은 똑같기때문에 렌더링x
 <MemorizedBtn text={value} fontSize={18} />
 <MemorizedBtn text="Continue" />
+
+useEffect()는 처음 render 될때만 실행하고 그 이후에는 실행하지 않는 함수를 넣음
+  useEffect(() => {
+    console.log(keyword);
+  }, [keyword]); keyword가 변할때 마다 실행
+ 
+
+SetToDos(currentArray => [toDo, ...currentArray])
+toDo를 currentArray에 push
+[toDo, currentArray]를 하면 [toDo, currentArray]라는 새로운 배열이 만들어짐
+
+{todos.map((item) => {<li>{item}</li>})}
+{}를 사용해 함수를 정의할때는 return키워드 필요
+{todos.map((item) => {
+  return <li>{item}</li>;
+})}
+{todos.map((item) => (
+  <li>{item}</li>
+))}
+둘중 하나로 수정
+
+.then((json) => {
+  setMovies(json.data.movies);
+  setLoading(false);
+}) 이 코드는 반환을 할 필요가 없어서 return이 필요없음
+
+{movies.map((movie) => {
+  return <li>{movie.title}</li>
+})}
+이 코드는 <li>{movie.title}</li>이 부분을 반환해야해서 필요함
