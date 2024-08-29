@@ -87,3 +87,20 @@ toDo를 currentArray에 push
   return <li>{movie.title}</li>
 })}
 이 코드는 <li>{movie.title}</li>이 부분을 반환해야해서 필요함
+
+React-router-dom 말고 a태그를 사용하면 페이지 전체를 재실행
+<Link to={/movie/${id}}>{title}</Link> 이 코드는 a태그와 역할 비슷
+이코드를 누르면  movie/${id} 여기경로로 이동하고 이 경로로 이동하면         <Route path="/movie">
+  <Detail />
+</Route> 이 부분 렌더링
+
+<Route path="/movie"> 여기에 id를 지정하지 않아도
+/movie 경로는 /movie/123와 같은 더 긴 경로의 일부분이기 때문에 매칭이 가능합니다
+
+동작 순서
+
+1 <Link to={/movie/${id}}>{title}</Link>를 누르면 movie/id로 이동
+2 <Route path="/movie/:id"> :id는 동적 경로 세그먼트로 :id랑 React Router는 URL과 경로 패턴을 비교하여, URL이 /movie/123일 때, 이 URL이 /movie/:id 경로와 일치한다고 판단합니다. id부분 123으로 매핑
+
+React Router는 URL의 동적 세그먼트를 추출하여 컴포넌트에 전달할 수 있도록 useParams라는 훅을 제공합니다.
+ const { id } = useParams(); url에서 id를 추출
